@@ -1,0 +1,14 @@
+main: me.flockshot.maxprestige.MaxPrestigePlugin
+name: MaxPrestige
+description: Allow maxprestige
+version: 1.0
+api-version: 1.15
+authors: [Flockshot]
+depend: [Vault, EZPrestige]
+commands:
+  maxprestige:
+    description: main command.
+
+permissions:
+  maxprestige.command:
+    description: commnad perm
