@@ -59,25 +59,25 @@ public class MaxPrestigePlugin extends JavaPlugin implements Listener
     }
 
     private boolean setupEconomy() {
-        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+        if(getServer().getPluginManager().getPlugin("Vault") == null)
             return false;
-        }
+
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
-        if (rsp == null) {
+        if(rsp == null)
             return false;
-        }
+
         econ = rsp.getProvider();
         return econ != null;
     }
     
     private boolean setupEZPrestige() {
-        if (getServer().getPluginManager().getPlugin("EZPrestige") == null) {
+        if(getServer().getPluginManager().getPlugin("EZPrestige") == null)
             return false;
-        }
+        
         RegisteredServiceProvider<EZPrestige> rsp = getServer().getServicesManager().getRegistration(EZPrestige.class);
-        if (rsp == null) {
+        if(rsp == null)
             return false;
-        }
+        
         setEzPrestige(rsp.getProvider());
         return getEzPrestige() != null;
     }
