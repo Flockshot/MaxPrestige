@@ -28,29 +28,29 @@ public class MaxPrestigePlugin extends JavaPlugin implements Listener
     public void onEnable()    
     {
 
-            if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
-                new PlaceholderTranslator(this).register();
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null)
+            new PlaceholderTranslator(this).register();
             
-            getConfig().options().copyDefaults(true);        
-            saveConfig();
+        getConfig().options().copyDefaults(true);        
+        saveConfig();
             
-            //setConfigHandler(new ConfigHandler(this));
-            setLanguageHandler(new LanguageHandler(this, Language.EN));
+        //setConfigHandler(new ConfigHandler(this));
+        setLanguageHandler(new LanguageHandler(this, Language.EN));
             
-            if(!running)
-            {
-                if (!setupEconomy() ) {
-                    getLogger().severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));
-                    getServer().getPluginManager().disablePlugin(this);
-                    return;
-                }
-                setupEZPrestige();
-          
-                getCommand("maxprestige").setExecutor(new MaxPrestigeCommand(this));
-                getServer().getPluginManager().registerEvents(this, this);
-                running = true;
-
+        if(!running)
+        {
+            if(!setupEconomy()) {
+                getLogger().severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));
+                getServer().getPluginManager().disablePlugin(this);
+                return;
             }
+            setupEZPrestige();
+          
+            getCommand("maxprestige").setExecutor(new MaxPrestigeCommand(this));
+            getServer().getPluginManager().registerEvents(this, this);
+            running = true;
+
+        }
 
     }
     
